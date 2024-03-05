@@ -1,16 +1,16 @@
+import React, { useEffect, useState } from "react";
 import images from "../../assets/images/images";
 
-export const Contrat = () => {
-  const data: any = [
-    {
-      title: "Date de debut",
-      date: "10/10/2021",
-    },
-    {
-      title: "Date de fin",
-      date: "Indeterminé",
-    },
-  ];
+interface ContratData {
+  data: Array<{ title: string; date: string }>;
+}
+
+export const Contrat: React.FC<ContratData> = ({ data }) => {
+  const [contratData, setContratData] = useState<any>([]);
+  useEffect(() => {
+    data?.length > 0 && setContratData(data);
+  }, [data]);
+
   return (
     <div className="bg-[#f4f9f5] rounded-lg">
       <div className="flex justify-between items-center p-3">
@@ -48,7 +48,7 @@ export const Contrat = () => {
         </div>
       </div>
       <div className="flex justify-between p-3 -mt-8">
-        {data.map((item: any, index: number) => {
+        {contratData.map((item: any, index: number) => {
           return (
             <div key={index}>
               <p className="text-[#a0a4a7] text-sm">{item.title}</p>
@@ -59,14 +59,22 @@ export const Contrat = () => {
       </div>
       <div className="flex gap-3 items-center bg-[#00b477] px-3 py-2 rounded-b-lg">
         <div className="bg-white p-3 flex justify-center items-center rounded-full w-[1em] h-[1em]">
-          <svg fill="currentColor" viewBox="0 0 16 16" height="1em" width="1em" color="#00b477">
+          <svg
+            fill="currentColor"
+            viewBox="0 0 16 16"
+            height="1em"
+            width="1em"
+            color="#00b477"
+          >
             <path d="M8 1a2.5 2.5 0 012.5 2.5V4h-5v-.5A2.5 2.5 0 018 1zm3.5 3v-.5a3.5 3.5 0 10-7 0V4H1v10a2 2 0 002 2h10a2 2 0 002-2V4h-3.5zM2 5h12v9a1 1 0 01-1 1H3a1 1 0 01-1-1V5z" />
           </svg>
         </div>
 
         <div className="mt-4">
-          <p className="text-[#4fd1a5] -mt-2 font-[500] text-sm">Salaire de base</p>
-          <p className="text-white font-[500] -mt-2 text-sm">1500000 FCFA</p>
+          <p className="text-[#4fd1a5] -mt-2 font-[500] text-sm">
+            Salaire de base
+          </p>
+          <p className="text-white font-[500] -mt-2 text-sm">1 500 000 FCFA</p>
         </div>
       </div>
     </div>

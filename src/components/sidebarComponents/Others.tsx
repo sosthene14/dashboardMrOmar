@@ -1,6 +1,6 @@
 export const Others = () => {
   return (
-    <div className="mt-[18vh]">
+    <div className="mt-[30vh]">
       <div className="flex items-center gap-2 cursor-pointer">
         <svg
           viewBox="0 0 1024 1024"

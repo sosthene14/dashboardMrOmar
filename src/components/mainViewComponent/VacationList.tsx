@@ -1,8 +1,8 @@
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import TableCompnent from "./Table";
-import MonthDropDown from "./DropDownMonth";
-import YearDropDown from "./DropDownYear";
-export const WeekList = () => {
+import CustomDropdown from "../custom/CustomDropDown";
+import Constants from "../../constants/Constants";
+export const VacationList = () => {
   return (
     <div className="bg-white dark:bg-slate-800 rounded-lg p-5 text-slate-500 dark:text-slate-400">
       <div>
@@ -14,13 +14,14 @@ export const WeekList = () => {
             <p className="text-sm font-[500]">Liste des congés</p>
           </div>
           <div className="flex gap-3">
-            <MonthDropDown />
-            <YearDropDown />
+            <CustomDropdown dataTypeName="Mois" arrayOfData={Constants.monthsList} dataNames={Constants.monthNames} />
+            <CustomDropdown dataTypeName="Année" arrayOfData={Constants.yearsList} dataNames={Constants.yearsNames} />
+
           </div>
         </div>
         <div className="w-full h-[1px] bg-gray-200 mt-3"></div>
       </div>
-      <TableCompnent />
+      <TableCompnent data={Constants.dataVacation} />
     </div>
   );
 };

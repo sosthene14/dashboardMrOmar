@@ -1,18 +1,15 @@
-export const Vacation = () => {
-  const data: any = [
-    {
-      title: "Solde N-1",
-      amount: "16",
-    },
-    {
-      title: "Solde",
-      amount: "10",
-    },
-    {
-      title: "Prix",
-      amount: "20",
-    },
-  ];
+import React, { useState, useEffect } from "react";
+
+interface VacationData {
+  data: { title: string; amount: number }[];
+}
+
+export const Vacation: React.FC<VacationData> = ({ data }) => {
+  const [vacationData, setVacationData] = useState<any>([]);
+  useEffect(() => {
+    data?.length > 0 && setVacationData(data);
+  }, [data]);
+
   return (
     <div className="flex flex-col">
       <div className="flex items-center gap-2">
@@ -34,7 +31,7 @@ export const Vacation = () => {
         Congés
       </p>
       <div className="flex justify-between items-center">
-        {data.map((item: any, index: number) => {
+        {vacationData.map((item: any, index: number) => {
           return (
             <div key={index} className="text-sm">
               <div className="flex flex-col items-center">

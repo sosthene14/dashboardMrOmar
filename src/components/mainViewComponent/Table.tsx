@@ -1,43 +1,25 @@
 import { useEffect, useState } from "react";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
-const TableComponent = () => {
+import React from 'react';
+
+interface TableData{
+  data : {name:string; startingDate:string|Date; endingDate:string|Date; status:string; style:string}[]
+}
+
+const TableComponent:React.FC<TableData> = ({data}) => {
   const [page, setPage] = useState(1);
   const itemsPerPage = 2;
+  const [dataVacation, setDataVacation] = useState<any>([])
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
 
-  const data: any[] = [
-    {
-      name: "Congés payés",
-      startingDate: "15/10/2023",
-      endingDate: "15/12/2023",
-      status: "validé",
-      style: "success",
-    },
-    {
-      name: "Congés sans solde",
-      startingDate: "15/10/2023",
-      endingDate: "25/10/2023",
-      status: "rejeté",
-      style: "error",
-    },
-    {
-      name: "Arrêt maladie",
-      startingDate: "17/02/2022",
-      endingDate: "30/10/2023",
-      status: "En validation",
-      style: "warning",
-    },
-    {
-      name: "Congés payés",
-      startingDate: "15/10/2023",
-      endingDate: "15/10/2024",
-      status: "validé",
-      style: "success",
-    },
-  ];
-  const dataToDisplay: any = data.slice(startIndex, endIndex);
-  const totalPages: any = Math.ceil(data.length / itemsPerPage);
+  useEffect(() => {
+    data?.length > 0 && setDataVacation(data);
+  }, [data]);
+
+
+  const dataToDisplay: any = dataVacation.slice(startIndex, endIndex);
+  const totalPages: any = Math.ceil(dataVacation.length / itemsPerPage);
   const [pageCount, setPageCount] = useState<number[]>([]);
 
   const handleTotalPages = () => {
@@ -50,7 +32,7 @@ const TableComponent = () => {
   };
   useEffect(() => {
     handleTotalPages();
-  }, []);
+  }, [dataVacation]);
 
   return (
     <div className="container mx-auto mt-8 text-sm border-spacing-0 font-[500]">
@@ -127,11 +109,11 @@ const TableComponent = () => {
             onClick={() =>
               setPage((prevPage) => Math.min(prevPage + 1, totalPages))
             }
-            disabled={endIndex >= data.length}
+            disabled={endIndex >= dataVacation.length}
           >
             <div className="bg-[#eaebed] cursor-pointer p-1 flex justify-center items-center rounded-full w-[1em] h-[1em]">
               <FaArrowRight
-                color={endIndex >= data.length ? "gray" : "black"}
+                color={endIndex >= dataVacation.length ? "gray" : "black"}
                 size={10}
               />
             </div>

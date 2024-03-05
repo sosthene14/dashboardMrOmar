@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import Toggle from 'react-toggle';
 import { CiLight } from 'react-icons/ci';
 import { MdNightsStay } from 'react-icons/md';
-import './Switcher.css';
+import './ThemeToogler.css';
 
-export const Switcher = () => {
+export const ThemeToggler = () => {
   const [checked, setChecked] = useState(false);
   const element: any = document.documentElement;
 
