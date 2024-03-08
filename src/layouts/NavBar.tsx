@@ -6,7 +6,7 @@ import { GrNotes } from "react-icons/gr";
 import { GoFileDirectory } from "react-icons/go";
 import { IoWalletOutline, IoHome } from "react-icons/io5";
 import { ThemeToggler } from "../common/themeToogler/ThemeToggler";
-import { Salutation } from "../mainViewComponent/Salutation";
+import { Salutation } from "../components/mainViewComponent/Salutation";
 import { FaArrowRight } from "react-icons/fa";
 import Hamburger from "hamburger-react";
 import useClickOutside from "../hooks/useClickOutside";

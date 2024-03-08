@@ -51,7 +51,7 @@ const CustomDropdown: React.FC<DataDropDown> = ({
   return (
     <div>
       <Flex>
-        <Dropdown menu={menuProps}>
+        <Dropdown {...menuProps}>
           <Button className="bg-[#f4f9f5] justify-center  flex items-center  border-none font-[500] w-[7rem] ">
             <Flex className="flex items-center justify-center text-[#3a3b3b] hover:text-[#00b477]">
               {menuProps.selectedvalue || dataTypeName}

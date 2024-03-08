@@ -5,7 +5,6 @@ import getDayOfWeek from "../../utils/getDayOfWeek";
 interface HandleProps {
   dataKey: { key: number; type: string };
 }
-
 export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
   const [dayList, setDayList] = useState<number[]>([]);
   const [page, setPage] = useState(1);
@@ -16,11 +15,9 @@ export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
   const totalPages: any = Math.ceil(dayList.length / itemsPerPage);
   const [monthSelectedIndex, setMonthSelectedIndex] = useState<number>(0);
   const [yearsSelectedIndex, setYearsSelectedIndex] = useState<number>(0);
-  const yearsList = [2020, 2021, 2022, 2023, 2024];
-  let selectedYear = yearsList[yearsSelectedIndex-1]
+
 
   useEffect(() => {
-    console.log(dataKey);
     if (dataKey) {
       if (dataKey.type === "Mois") {
         setMonthSelectedIndex(parseInt(String(dataKey.key), 10));
@@ -38,11 +35,10 @@ export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
       (_, index) => index + 1
     );
     setDayList(daysArray);
-    console.log(daysArray);
   };
 
   useEffect(() => {
-    getNumOfDays(2023, 1);
+    getNumOfDays(2024, monthSelectedIndex);
   }, []);
   const CalendarDays = () => {
     return (
@@ -52,12 +48,12 @@ export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
             key={index}
             className={`border-solid hover:bg-slate-200 cursor-pointer border-[1px] rounded-lg border-gray-200 w-[90%] md:w-[13%] h-[80px] ${
               getDayOfWeek.getDayOfWeek(
-                selectedYear,
+                2024,
                 monthSelectedIndex,
                 day
               ) === "samedi" ||
               getDayOfWeek.getDayOfWeek(
-                selectedYear,
+                2024,
                 monthSelectedIndex,
                 day
               ) === "dimanche"
@@ -80,7 +76,7 @@ export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
                 <div key={index} className="w-[90%] md:w-[13%] ">
                   <p>
                     {getDayOfWeek.getDayOfWeek(
-                      selectedYear,
+                      yearsSelectedIndex,
                       monthSelectedIndex,
                       day
                     )}

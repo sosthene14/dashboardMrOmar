@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
-import { Vacation } from "../sidebarComponents/Vacation";
-import { PersonelInformations } from "../sidebarComponents/PersonelInformations";
-import { Others } from "../sidebarComponents/Others";
-import { Contrat } from "../sidebarComponents/Contrat";
+import { Vacation } from "../components/sidebarComponents/Vacation";
+import { PersonelInformations } from "../components/sidebarComponents/PersonelInformations";
+import { Others } from "../components/sidebarComponents/Others";
+import { Contrat } from "../components/sidebarComponents/Contrat";
 import { FaArrowRight } from "react-icons/fa";
-import Constants from "../../constants/Constants";
+import Constants from "../constants/Constants";
 import useClickOutside from "../hooks/useClickOutside";
 
 export const SideBar = () => {

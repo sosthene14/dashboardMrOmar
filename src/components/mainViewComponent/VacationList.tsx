@@ -1,6 +1,6 @@
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import TableCompnent from "./Table";
-import CustomDropdown from "../custom/CustomDropDown";
+import CustomDropdown from "../../custom/CustomDropDown";
 import Constants from "../../constants/Constants";
 export const VacationList = () => {
   return (
