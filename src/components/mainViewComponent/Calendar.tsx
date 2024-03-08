@@ -17,7 +17,7 @@ export const Calendar: React.FC<HandleProps> = ({ dataKey }) => {
   const [monthSelectedIndex, setMonthSelectedIndex] = useState<number>(0);
   const [yearsSelectedIndex, setYearsSelectedIndex] = useState<number>(0);
   const yearsList = [2020, 2021, 2022, 2023, 2024];
-  let selectedYear = yearsList[yearsSelectedIndex-1]
+  let selectedYear = 2024
 
   useEffect(() => {
     console.log(dataKey);
